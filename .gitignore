@@ -1,0 +1,50 @@
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+
+# Venv
+venv/
+.venv/
+env/
+ENV/
+
+# Database
+data/
+*.db
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Docker
+docker/data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# MyPy
+.mypy_cache/

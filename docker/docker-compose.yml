@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  bot:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: salasff_bot
+    restart: unless-stopped
+    env_file: ../.env
+    volumes:
+      - bot_data:/app/data
+    networks:
+      - salasff_net
+    # Para produção com MySQL, adicione:
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
+
+  # ── MySQL (produção) ──────────────────────
+  # db:
+  #   image: mysql:8.0
+  #   container_name: salasff_db
+  #   restart: unless-stopped
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+  #     MYSQL_DATABASE: ${DB_NAME}
+  #     MYSQL_USER: ${DB_USER}
+  #     MYSQL_PASSWORD: ${DB_PASSWORD}
+  #   volumes:
+  #     - db_data:/var/lib/mysql
+  #   healthcheck:
+  #     test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #   networks:
+  #     - salasff_net
+
+volumes:
+  bot_data:
+  # db_data:
+
+networks:
+  salasff_net:
+    driver: bridge
